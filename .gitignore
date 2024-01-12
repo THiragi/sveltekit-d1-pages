@@ -11,3 +11,7 @@ vite.config.ts.timestamp-*
 
 # vscode
 *.code-workspace
+
+# wrangler
+
+.wrangler
