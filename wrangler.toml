@@ -1,4 +1,4 @@
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "d1test"
-database_id = "41b6616a-a270-4420-9d0c-a07952c1600b"
+database_name = "d1pages"
+database_id = "54ae06be-e208-4585-9b12-b97e8771a0a1"
