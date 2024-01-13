@@ -1,13 +1,14 @@
 import { error } from '@sveltejs/kit';
-import { drizzle } from 'drizzle-orm/d1';
-import { users } from '$lib/server/db/schema';
+import { createHonoClient } from '$lib/server/hono';
 
-export const load = async ({ platform }) => {
-	if (!platform?.env.DB) {
+export const load = async ({ fetch }) => {
+	const honoClient = createHonoClient(fetch);
+	const res = await honoClient.api.users.$get();
+
+	if (!res.ok) {
 		error(500);
 	}
-	const db = drizzle(platform?.env.DB);
-	const result = await db.select().from(users).all();
 
+	const { result } = await res.json();
 	return { result };
 };
