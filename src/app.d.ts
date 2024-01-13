@@ -7,9 +7,16 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		interface Platform {
+			context?: {
+				waitUntil(promise: Promise<unknown>): void;
+				passThroughOnException: () => void;
+			};
 			env: {
+				// YOUR_KV_NAMESPACE: KVNamespace;
+				// YOUR_DURABLE_OBJECT_NAMESPACE: DurableObjectNamespace;
 				DB: D1Database;
 			};
+			caches?: CacheStorage & { default: Cache };
 		}
 	}
 }
